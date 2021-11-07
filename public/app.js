@@ -1,6 +1,7 @@
 //import Vue from 'vue'
 //const Vue = require('vue')
 //const sqlite3 = require('../sqlite3').verbose();
+import axios from "axios"
 
 
 const App = {
@@ -50,17 +51,26 @@ const App = {
         },
 
         async submitFile() {
-            let formData = new FormData();
-            formData.append('image', this.file, this.file.name);
-            const res = await fetch('/api/server', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'multipart/form-data'
-                },
-                body: formData
+            const fd = new FormData();
+            fd.append('image', this.file, this.file.name)
+            axios.post('/api/server', fd)
+            .then(res => {
+                console.log(res)
             })
-            console.log('data', formData)
-        },
+        }
+
+        // async submitFile() {
+        //     let formData = new FormData();
+        //     formData.append('image', this.file, this.file.name);
+        //     const res = await fetch('/api/server', {
+        //         method: 'POST',
+        //         headers: {
+        //             'Content-Type': 'multipart/form-data'
+        //         },
+        //         body: formData
+        //     })
+        //     console.log('data', formData)
+        // },
 
     },
     async mounted() {
