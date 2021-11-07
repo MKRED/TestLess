@@ -1,7 +1,7 @@
 //import Vue from 'vue'
 //const Vue = require('vue')
 //const sqlite3 = require('../sqlite3').verbose();
-import axios from "axios"
+//import axios from "axios"
 
 
 const App = {
