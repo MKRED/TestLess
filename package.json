@@ -1,0 +1,26 @@
+{
+  "name": "node-less",
+  "version": "1.0.0",
+  "description": "Less Node, Vue",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "keywords": [
+    "node",
+    "vue"
+  ],
+  "author": "Kvach MA <mkvach@mail.ru>",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.22.0",
+    "express": "^4.17.1",
+    "sqlite3": "^5.0.2",
+    "vue": "^3.2.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.12"
+  }
+}

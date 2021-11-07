@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+
+    <title>Главная</title>
+</head>
+<body>
+
+  <hr>
+        <!-- Хедер -->
+    <div class="container" id="app">
+        <nav class="list-group-item">
+            <ul class="nav nav-pills">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="/index.html">Главная</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="/create_item.html">Создать</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled" href="#">В разработке</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link disabled">В разработке</a>
+                </li>
+              </ul>
+        </nav>
+        <h1>Home {{test}}</h1>
+
+        <!-- Форма -->
+        <form @submit.prevent='createServer'>
+            <div  class="row g-3">
+                <div class="col-sm-7">
+                    <input type="text" class="form-control" placeholder="Название блюда" v-model='name' required>
+                </div>
+                <div class="col-md">
+                    <select id="inputState" class="form-select" v-model="country" required>
+                      <option v-for="choose in testC">{{ choose.item }}</option>
+                    </select>
+                </div>
+                <div class="form-floating">
+                    <textarea class="form-control" placeholder="Заполни описание" id="floatingTextarea" v-model='description'></textarea>
+                    <label for="floatingTextarea">Описание</label>
+                </div>
+            </div>
+            <br>
+            <button type="submit" class="btn btn-primary">Добавить</button> 
+        </form>
+
+        <hr>
+
+          <div class="container">
+            <div class="">
+              <label>File
+                <input type="file" id="file" ref="file" v-on:change="handleFileUpload"/>
+              </label>
+                <button v-on:click="submitFile()">Отправить</button>
+            </div>
+          </div>
+
+        <hr>
+
+        <!-- Вывод -->
+        <ul class="list-group">
+            <li class="list-group-item" v-for="server in servers" @click='remove(server.id)'>
+                <a href="#" class="list-group-item list-group-item-action">
+                    <div class="d-flex w-100 justify-content-between">
+                      <h5 class="mb-1">{{ server.name }}</h5>
+                      <small class="text-muted"><strong>ID: </strong>{{ server.id }}</small>
+                    </div>
+                    <p class="mb-1"><strong>Страна: </strong>{{ server.country }}</p>
+                    <small class="text-muted" v-if=" server.description == '' "> <dfn>Описание отсутствует</dfn></small>
+                    <small class="text-muted" v-else >{{ server.description }}</small>
+                    <hr>
+                    <img src="/img/notfound.png" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="/app.js"></script>
+</body>
+</html>
